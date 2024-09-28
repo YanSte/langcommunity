@@ -2,19 +2,19 @@ from __future__ import annotations
 
 from typing import Any, Callable, Optional
 
-from langfoundation.callback.display.records.agent import (
+from langfoundation.callback.base.records.agent import (
     AgentRecord,
     AgentState,
 )
-from langfoundation.callback.display.records.retriever import (
+from langfoundation.callback.base.records.retriever import (
     RetrieverRecord,
     RetrieverState,
 )
-from langfoundation.callback.display.records.token import (
+from langfoundation.callback.base.records.token import (
     TokenStream,
     TokenStreamState,
 )
-from langfoundation.callback.display.records.tool import (
+from langfoundation.callback.base.records.tool import (
     ToolRecord,
     ToolsState,
 )

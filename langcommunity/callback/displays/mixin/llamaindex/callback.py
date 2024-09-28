@@ -1,23 +1,23 @@
 from __future__ import annotations
 
 from abc import ABC
-from typing import Any, List, Optional
+from typing import Any, Optional
 from uuid import UUID
 
-from langfoundation.callback.display.base import (
+from langfoundation.callback.base.base import (
     BaseAsyncDisplayCallbackHandler,
 )
-from langfoundation.callback.display.records.agent import AgentRecord
-from langfoundation.callback.display.records.retriever import (
+from langfoundation.callback.base.records.agent import AgentRecord
+from langfoundation.callback.base.records.retriever import (
     RetrieverRecord,
 )
-from langfoundation.callback.display.records.token import (
+from langfoundation.callback.base.records.token import (
     TokenOrigin,
     TokenStream,
     TokenStreamState,
 )
-from langfoundation.callback.display.records.tool import ToolRecord
-from langfoundation.callback.display.tags import Tags
+from langfoundation.callback.base.records.tool import ToolRecord
+from langfoundation.callback.base.tags import Tags
 
 from langcommunity.callback.displays.llamaindex.callback import (
     BaseAsyncLLamaIndexCallbackHandler,
@@ -69,7 +69,6 @@ class BaseAsyncDisplayMixinCallbackHandler(BaseAsyncDisplayCallbackHandler, Base
         cumulate_token: str,
         state: LLamaIndexStreamState,
         run_id: UUID,
-        tags: List[str] | None = None,
         parent_run_id: Optional[UUID] = None,
         **kwargs: Any,
     ) -> None:
@@ -78,7 +77,10 @@ class BaseAsyncDisplayMixinCallbackHandler(BaseAsyncDisplayCallbackHandler, Base
 
         Bridge LLama Index to Langchain
         """
-        if Tags.is_not_display_or_with_parser_tag(tags):
+        if not self.record:
+            return
+
+        if Tags.is_not_display_or_with_parser_tag(self.record.tags):
             return
 
         await self.on_token_stream(
@@ -94,14 +96,6 @@ class BaseAsyncDisplayMixinCallbackHandler(BaseAsyncDisplayCallbackHandler, Base
             **kwargs,
         )
 
-    def _to_stream_token(self, state) -> TokenStreamState:
-        if state == LLamaIndexStreamState.STREAM:
-            return TokenStreamState.STREAM
-        elif state == LLamaIndexStreamState.START:
-            return TokenStreamState.START
-        elif state == LLamaIndexStreamState.END:
-            return TokenStreamState.END
-
     async def on_tool(self, tool: ToolRecord, **kwargs: Any) -> None:
         pass
 
@@ -116,3 +110,11 @@ class BaseAsyncDisplayMixinCallbackHandler(BaseAsyncDisplayCallbackHandler, Base
 
     async def on_feedback(self, feedback: str, **kwargs: Any) -> None:
         pass
+
+    def _to_stream_token(self, state: LLamaIndexStreamState) -> TokenStreamState:
+        if state == LLamaIndexStreamState.STREAM:
+            return TokenStreamState.STREAM
+        elif state == LLamaIndexStreamState.START:
+            return TokenStreamState.START
+        elif state == LLamaIndexStreamState.END:
+            return TokenStreamState.END

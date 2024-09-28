@@ -3,7 +3,7 @@ from typing import List, Optional
 from uuid import UUID
 
 from langchain_core.documents import Document as LangchainDocument
-from langfoundation.callback.display.records.base import BaseRecord
+from langfoundation.callback.base.records.base import BaseRecord
 from strenum import LowercaseStrEnum
 
 

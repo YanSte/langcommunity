@@ -3,7 +3,7 @@ from __future__ import annotations
 import sys
 from typing import Any
 
-from langfoundation.callback.display.records.token import (
+from langfoundation.callback.base.records.token import (
     TokenStream,
     TokenStreamState,
 )

@@ -2,15 +2,15 @@ from __future__ import annotations
 
 from typing import Any, List
 
-from langfoundation.callback.display.records.agent import AgentRecord
-from langfoundation.callback.display.records.retriever import (
+from langfoundation.callback.base.records.agent import AgentRecord
+from langfoundation.callback.base.records.retriever import (
     RetrieverRecord,
 )
-from langfoundation.callback.display.records.token import (
+from langfoundation.callback.base.records.token import (
     TokenStream,
     TokenStreamState,
 )
-from langfoundation.callback.display.records.tool import ToolRecord
+from langfoundation.callback.base.records.tool import ToolRecord
 
 from langcommunity.callback.displays.mixin.llamaindex.callback import (
     BaseAsyncDisplayMixinCallbackHandler,

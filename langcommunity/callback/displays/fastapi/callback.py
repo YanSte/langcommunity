@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 from typing import Any, AsyncIterator, Union
 
-from langfoundation.callback.display.records.token import (
+from langfoundation.callback.base.records.token import (
     TokenStream,
     TokenStreamState,
 )
