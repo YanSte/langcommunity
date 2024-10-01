@@ -8,7 +8,7 @@ in-project = true
 
 [tool.poetry]
 name = "langcommunity"
-version = "1.0.8"
+version = "1.0.9"
 description = "langcommunity"
 authors = ["Yannick Stephan <stephan.yannick@me.com>"]
 readme = "README.md"
@@ -28,7 +28,7 @@ mypy = "*"
 ruff = "*"
 
 # Base
-langfoundation = "^1.2.2"
+langfoundation = "*"
 
 # Langchain
 langchain = "^0.3.1"
