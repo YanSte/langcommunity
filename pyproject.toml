@@ -8,7 +8,7 @@ in-project = true
 
 [tool.poetry]
 name = "langcommunity"
-version = "1.0.9"
+version = "1.1.0"
 description = "langcommunity"
 authors = ["Yannick Stephan <stephan.yannick@me.com>"]
 readme = "README.md"
@@ -59,6 +59,13 @@ langchain-together = "^0.2.0"
 langchain-google-vertexai = "^2.0.1"
 pymongo = "^4.7.2"
 motor = "^3.4.0"
+
+[tool.poetry.group.cohere]
+optional = true
+
+[tool.poetry.group.cohere.dependencies]
+# Rerank
+cohere = "^5.8.1"
 
 
 ################################################################################

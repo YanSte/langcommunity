@@ -159,7 +159,10 @@ class BaseAsyncLLamaIndexCallbackHandler(BaseCallbackHandler, ABC):
             if payload and EventPayload.EXCEPTION in payload:
                 logger.error(
                     payload,
-                    extra={"title": "[ERROR] Exception in LLAMMA" + " : " + self.__class__.__name__, "verbose": True},
+                    extra={
+                        "title": "[ERROR] Exception in LLAMMA" + " : " + self.__class__.__name__,
+                        "verbose": True,
+                    },
                 )
 
         elif event_type == CBEventType.QUERY:
