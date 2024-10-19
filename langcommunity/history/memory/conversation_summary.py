@@ -9,7 +9,7 @@ from langchain_core.chat_history import (
     InMemoryChatMessageHistory,
 )
 from langchain_core.messages import BaseMessage, get_buffer_string
-from pydantic import Field, model_validator
+from pydantic import Field
 
 
 class ConversationSummaryChatMemory(BaseChatMemory, SummarizerMixin):
@@ -45,17 +45,6 @@ class ConversationSummaryChatMemory(BaseChatMemory, SummarizerMixin):
         :meta private:
         """
         return [self.memory_key]
-
-    @model_validator(mode="before")
-    def validate_prompt_input_variables(cls, values: Dict) -> Dict:
-        """Validate that prompt input variables are consistent."""
-        prompt_variables = values["prompt"].input_variables
-        expected_keys = {"summary", "new_lines"}
-        if expected_keys != set(prompt_variables):
-            raise ValueError(
-                "Got unexpected prompt input variables. The prompt expects " f"{prompt_variables}, but it should have {expected_keys}."
-            )
-        return values
 
     @property
     def summury_or_history_messages(self) -> List[BaseMessage]:
