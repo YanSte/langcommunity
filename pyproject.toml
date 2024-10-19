@@ -8,7 +8,7 @@ in-project = true
 
 [tool.poetry]
 name = "langcommunity"
-version = "1.2.1"
+version = "1.2.2"
 description = "langcommunity"
 authors = ["Yannick Stephan <stephan.yannick@me.com>"]
 readme = "README.md"

@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 class RerankCohere(BaseRerankModel):
     """Interface for cross encoder models."""
 
-    model_name: str
+    model: str
 
     def rerank(
         self,
@@ -26,7 +26,7 @@ class RerankCohere(BaseRerankModel):
     ) -> List[Tuple[int, float]]:
         with CohereClient() as client:
             response = client.rerank(
-                model=self.model_name,
+                model=self.model,
                 query=query,
                 documents=docs,
                 top_n=top_n,
@@ -42,7 +42,7 @@ class RerankCohere(BaseRerankModel):
     ) -> List[Tuple[int, float]]:
         async with AsyncCohereClient() as client:
             response = client.rerank(
-                model=self.model_name,
+                model=self.model,
                 query=query,
                 documents=docs,
                 top_n=top_n,
