@@ -3,7 +3,6 @@ from typing import Any, Dict, Type
 from langchain_core.embeddings import Embeddings
 from langfoundation.modelhub.embedding.base import BaseEmbeddingProvider
 
-
 try:
     from langchain_huggingface import HuggingFaceEmbeddings  # type: ignore
 except ImportError:

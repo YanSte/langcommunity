@@ -2,7 +2,6 @@ from typing import Any, Callable, Generator, Optional, Sequence
 
 from langchain_core.language_models import BaseLanguageModel
 
-
 try:
     from llama_index.core.base.llms.generic_utils import (  # type: ignore[unused-ignore] # noqa: F401
         completion_response_to_chat_response,

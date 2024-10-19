@@ -3,7 +3,6 @@ from typing import Any, Dict, Type
 from langchain_core.embeddings import Embeddings
 from langfoundation.modelhub.embedding.base import BaseEmbeddingProvider
 
-
 try:
     from modelhub.adapter.langchain_overrides.mistral_embeddings import MistralAIEmbeddings  # type: ignore
 except ImportError:

@@ -6,14 +6,17 @@ from contextlib import redirect_stdout
 from io import StringIO
 from typing import Any, Dict, Optional, Type
 
-from langchain.pydantic_v1 import BaseModel, Field
-from langchain_core.callbacks import AsyncCallbackManagerForToolRun, CallbackManagerForToolRun
+from langchain_core.callbacks import (
+    AsyncCallbackManagerForToolRun,
+    CallbackManagerForToolRun,
+)
 from langchain_core.runnables.config import run_in_executor
 from langchain_core.tools import BaseTool
+from pydantic import BaseModel, Field
 
 
 class PythonInputs(BaseModel):
-    query: str = Field(prompt="Code snippet to run")
+    query: str = Field(description="Code snippet to run")
 
 
 class PythonAstREPLTool(BaseTool):

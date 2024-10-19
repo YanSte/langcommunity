@@ -11,7 +11,6 @@ from pydantic import BaseModel, Field
 from langcommunity.tools.python_ast_repl_tool import PythonAstREPLTool
 from langcommunity.tools.you import YahooFinanceStockPriceTool
 
-
 ###################################
 # Tools
 ###################################

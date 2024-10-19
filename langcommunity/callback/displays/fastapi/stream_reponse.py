@@ -7,7 +7,6 @@ from typing import AsyncIterable, Coroutine
 
 from langcommunity.callback.displays.fastapi.callback import AsyncFastAPICallbackHandler
 
-
 logger = logging.getLogger(__name__)
 
 try:

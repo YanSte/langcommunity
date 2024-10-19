@@ -12,7 +12,6 @@ from langcommunity.callback.displays.mixin.llamaindex.callback import (
     BaseAsyncDisplayMixinCallbackHandler,
 )
 
-
 try:
     from halo import Halo  # type: ignore
 except ImportError:

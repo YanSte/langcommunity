@@ -4,8 +4,8 @@ from typing import List, Tuple
 from langfoundation.modelhub.rerank.base import BaseRerankModel
 
 try:
-    from cohere.client import Client as CohereClient  # type: ignore
     from cohere.client import AsyncClient as AsyncCohereClient  # type: ignore
+    from cohere.client import Client as CohereClient  # type: ignore
 
 except ImportError:
     raise ImportError("Please install the `cohere` library by running: `poetry add cohere`.")

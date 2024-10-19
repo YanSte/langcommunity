@@ -1,11 +1,9 @@
-from functools import lru_cache
 import logging
+from functools import lru_cache
 from typing import Any, List, Tuple, Type, Union
 
 from langchain_community.cross_encoders import BaseCrossEncoder
-
 from langfoundation.modelhub.rerank.base import BaseRerankModel, BaseRerankProvider
-
 
 try:
     from langchain_community.cross_encoders import HuggingFaceCrossEncoder

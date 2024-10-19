@@ -3,7 +3,6 @@ from typing import List, Optional
 
 from langfoundation.modelhub.rerank.config import RerankConfig
 
-
 logger = logging.getLogger(__name__)
 
 try:

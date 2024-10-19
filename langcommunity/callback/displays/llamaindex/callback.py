@@ -1,5 +1,5 @@
-from abc import ABC, abstractmethod
 import logging
+from abc import ABC, abstractmethod
 from typing import Any, Dict, List, Optional, Tuple
 from uuid import UUID
 
@@ -10,7 +10,6 @@ from langcommunity.callback.displays.llamaindex.models.record import (
     LLamaIndexRetrieverState,
     LLamaIndexStreamState,
 )
-
 
 logger = logging.getLogger(__name__)
 

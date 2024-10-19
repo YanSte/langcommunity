@@ -5,11 +5,10 @@ from typing import Dict, List, Optional
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.messages import BaseMessage, message_to_dict, messages_from_dict
 
-
 logger = logging.getLogger(__name__)
 
 try:
-    from pymongo import errors, MongoClient  # type: ignore[unused-ignore] # noqa: F401
+    from pymongo import MongoClient, errors  # type: ignore[unused-ignore] # noqa: F401
 except ImportError:
     raise ImportError("langchain_groq library is not installed. Please install `poetry add pymongo motor`.")
 

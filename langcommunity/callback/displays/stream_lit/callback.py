@@ -22,7 +22,6 @@ from langfoundation.callback.base.records.tool import (
 from langcommunity.callback.displays.mixin.llamaindex.callback import BaseAsyncDisplayMixinCallbackHandler
 from langcommunity.utils.debug.formatter import Formatter
 
-
 try:
     import streamlit as st  # type: ignore
     from streamlit.delta_generator import DeltaGenerator  # type: ignore

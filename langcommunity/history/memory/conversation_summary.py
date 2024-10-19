@@ -1,13 +1,15 @@
 from __future__ import annotations
 
-from typing import Any, cast, Dict, List, Optional
+from typing import Any, Dict, List, Optional, cast
 
 from langchain.memory.chat_memory import BaseChatMemory
 from langchain.memory.summary import SummarizerMixin
-from langchain_core.chat_history import BaseChatMessageHistory, InMemoryChatMessageHistory
+from langchain_core.chat_history import (
+    BaseChatMessageHistory,
+    InMemoryChatMessageHistory,
+)
 from langchain_core.messages import BaseMessage, get_buffer_string
-from langchain_core.pydantic_v1 import root_validator
-from pydantic import Field
+from pydantic import Field, model_validator
 
 
 class ConversationSummaryChatMemory(BaseChatMemory, SummarizerMixin):
@@ -44,7 +46,7 @@ class ConversationSummaryChatMemory(BaseChatMemory, SummarizerMixin):
         """
         return [self.memory_key]
 
-    @root_validator()
+    @model_validator(mode="before")
     def validate_prompt_input_variables(cls, values: Dict) -> Dict:
         """Validate that prompt input variables are consistent."""
         prompt_variables = values["prompt"].input_variables

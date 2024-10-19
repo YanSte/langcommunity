@@ -6,7 +6,6 @@ from typing import Any, Dict
 
 from pydantic import BaseModel
 
-
 logger = logging.getLogger(__name__)
 
 
