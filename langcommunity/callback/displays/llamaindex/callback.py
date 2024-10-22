@@ -8,7 +8,6 @@ from langchain_core.documents import Document as LangchainDocument
 from langcommunity.callback.displays.llamaindex.models.record import (
     LLamaIndexRetrieverRecord,
     LLamaIndexRetrieverState,
-    LLamaIndexStreamState,
 )
 
 logger = logging.getLogger(__name__)
@@ -37,29 +36,6 @@ class BaseAsyncLLamaIndexCallbackHandler(BaseCallbackHandler, ABC):
     # ---
     @abstractmethod
     def llama_index_on_retriever(self, retriever: LLamaIndexRetrieverRecord, **kwargs: Any) -> None:
-        """
-        Abstract method to handle a retriever event.
-
-        Args:
-            retriever: The retriever record.
-            **kwargs: Additional keyword arguments.
-
-        Returns:
-            None
-        """
-        pass
-
-    @abstractmethod
-    async def llama_index_on_stream_token(
-        self,
-        id: int,
-        token: str,
-        cumulate_token: str,
-        state: LLamaIndexStreamState,
-        run_id: UUID,
-        parent_run_id: Optional[UUID] = None,
-        **kwargs: Any,
-    ) -> None:
         """
         Abstract method to handle a retriever event.
 

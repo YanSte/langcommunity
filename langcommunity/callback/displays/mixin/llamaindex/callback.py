@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 from abc import ABC
-from typing import Any, Optional
-from uuid import UUID
+from typing import Any
 
 from langfoundation.callback.base.base import (
     BaseAsyncDisplayCallbackHandler,
@@ -12,12 +11,9 @@ from langfoundation.callback.base.records.retriever import (
     RetrieverRecord,
 )
 from langfoundation.callback.base.records.token import (
-    TokenOrigin,
-    TokenStream,
     TokenStreamState,
 )
 from langfoundation.callback.base.records.tool import ToolRecord
-from langfoundation.callback.base.tags import Tags
 
 from langcommunity.callback.displays.llamaindex.callback import (
     BaseAsyncLLamaIndexCallbackHandler,
@@ -61,40 +57,6 @@ class BaseAsyncDisplayMixinCallbackHandler(BaseAsyncDisplayCallbackHandler, Base
                 tags=retriever.tags,
                 **kwargs,
             )
-
-    async def llama_index_on_stream_token(
-        self,
-        id: int,
-        token: str,
-        cumulate_token: str,
-        state: LLamaIndexStreamState,
-        run_id: UUID,
-        parent_run_id: Optional[UUID] = None,
-        **kwargs: Any,
-    ) -> None:
-        """
-        Handles the streaming of LLama index tokens.
-
-        Bridge LLama Index to Langchain
-        """
-        if not self.record:
-            return
-
-        if Tags.is_not_display_or_with_parser_tag(self.record.tags):
-            return
-
-        await self.on_token_stream(
-            token=TokenStream(
-                id=id,
-                token=token,
-                cumulate_tokens=cumulate_token,
-                state=self._to_stream_token(state),
-                origin=TokenOrigin.RETRIEVER,
-            ),
-            run_id=run_id,
-            parent_run_id=parent_run_id,
-            **kwargs,
-        )
 
     async def on_tool(self, tool: ToolRecord, **kwargs: Any) -> None:
         pass
